@@ -10,10 +10,14 @@ RUN apt-get update \
   && dpkg --add-architecture i386 \
   && apt-get -qqy update \
   && apt-get -qqy install libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
-  && wget -qO- https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz | tar xz -C /opt \
+  && mkdir /opt/android-sdk-linux \
+  && wget -qO- https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip | bsdtar -xvf- -C /opt/android-sdk-linux \
   && rm -rf /var/lib/apt/lists/*
 
-RUN /opt/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk -a -u -t tools,platform-tools,build-tools-24.0.3,android-23,android-24,extra-android-m2repository,extra-google-m2repository" \
+# RUN /opt/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk -a -u -t tools,platform-tools,build-tools-24.0.3,android-23,android-24,extra-android-m2repository,extra-google-m2repository" \
+#  && rm -rf /var/lib/apt/lists/*
+
+RUN /opt/android-sdk-linux/tools/bin/sdkmanager "tools" "platforms;android-25" "platform-tools" "build-tools;25.0.3" "extras;android;m2repository" "extras;google;m2repository" \
   && rm -rf /var/lib/apt/lists/*
 
 # Maven 3
