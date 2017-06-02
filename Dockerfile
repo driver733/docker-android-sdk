@@ -6,7 +6,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 COPY android-accept-licenses.sh /opt
 
 RUN apt-get update \
-  && apt-get install bsdtar \
+  && apt-get install bsdtar -y \
   && apt-get install default-jdk wget expect git -y \
   && dpkg --add-architecture i386 \
   && apt-get -qqy update \
