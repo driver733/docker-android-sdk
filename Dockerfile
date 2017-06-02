@@ -12,7 +12,8 @@ RUN apt-get update \
   && apt-get -qqy update \
   && apt-get -qqy install libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
   && mkdir /opt/android-sdk-linux \
-  && wget -qO- https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip | bsdtar -xvf- -C /opt/android-sdk-linux # \
+  && wget -qO- https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip | bsdtar -xvf- -C /opt/android-sdk-linux
+  # \
   # && rm -rf /var/lib/apt/lists/*
 
 # RUN /opt/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk -a -u -t tools,platform-tools,build-tools-24.0.3,android-23,android-24,extra-android-m2repository,extra-google-m2repository" \
