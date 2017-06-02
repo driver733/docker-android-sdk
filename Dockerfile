@@ -18,8 +18,9 @@ RUN apt-get update \
 # RUN /opt/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk -a -u -t tools,platform-tools,build-tools-24.0.3,android-23,android-24,extra-android-m2repository,extra-google-m2repository" \
 #  && rm -rf /var/lib/apt/lists/*
 
-RUN chmod -R 777 /opt/android-sdk-linux && \
-  /opt/android-sdk-linux/tools/bin/sdkmanager "tools" "platforms;android-25" "platform-tools" "build-tools;25.0.3" "extras;android;m2repository" "extras;google;m2repository" \
+RUN chmod -R 777 /opt/android-sdk-linux \
+  && yes | /opt/android-sdk-linux/tools/bin/sdkmanager --licenses \
+  && /opt/android-sdk-linux/tools/bin/sdkmanager "tools" "platforms;android-25" "platform-tools" "build-tools;25.0.3" "extras;android;m2repository" "extras;google;m2repository" \
   && rm -rf /var/lib/apt/lists/*
 
 # Maven 3
