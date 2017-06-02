@@ -16,7 +16,7 @@ RUN apt-get update \
 RUN /opt/android-accept-licenses.sh "/opt/android-sdk-linux/tools/android update sdk -a -u -t tools,platform-tools,build-tools-24.0.3,android-23,android-24,extra-android-m2repository,extra-google-m2repository" \
   && rm -rf /var/lib/apt/lists/*
 
-# Maven
+# Maven 3
 ENV MAVEN_VERSION 3.3.9
 ENV M2_HOME "/usr/local/apache-maven/apache-maven-${MAVEN_VERSION}"
 RUN wget --quiet "http://mirror.dkd.de/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \
